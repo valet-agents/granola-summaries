@@ -1,6 +1,6 @@
 # Granola Summaries
 
-After each Granola call, posts the moments that mattered to your deal channel — decisions, blockers, and the next step. @mention it any time to recall what happened on past calls.
+Every day, recaps the previous day's Granola calls — decisions, blockers, and the next step — to your deal channels.
 
 ## Prerequisites
 - A [Granola](https://granola.ai) account where you can mint a personal access token

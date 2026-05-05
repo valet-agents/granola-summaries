@@ -1,25 +1,22 @@
 name: granola-summaries
 display_name: Granola Summaries
 description: >-
-  Listens to every call so the team doesn't have to take notes.
-  After each Granola meeting wraps, posts the moments that mattered
-  — decisions, blockers, and the next step — to the Slack channel
-  the bot was invited to. @mention it to recall past calls.
+  Every day, recaps the previous day's Granola calls and posts the
+  moments that mattered — decisions, blockers, and next steps — to
+  whichever Slack channels the bot has been invited to.
 category: sales
 
 story:
   hero: "A teammate that listens to every call so you don't have to take notes."
   subheadline: >-
-    After each Granola call, posts the moments that mattered to your
-    deal channel — decisions, blockers, and the next step. @mention
-    it any time to recall what happened on past calls.
+    Every day, recaps the previous day's Granola calls — decisions,
+    blockers, and the next step — to your deal channels.
   steps:
     - role: trigger
-      title: "A Granola call ends."
+      title: "Every morning."
       body: >-
-        The heartbeat polls once a day and notices a meeting
-        that just finished. No webhook to configure, no manual
-        trigger.
+        The heartbeat fires once a day. The agent picks up every
+        Granola call that finished since the last run.
     - role: action
       title: "It distills the moments that mattered."
       body: >-
