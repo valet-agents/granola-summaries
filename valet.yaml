@@ -17,7 +17,7 @@ story:
     - role: trigger
       title: "A Granola call ends."
       body: >-
-        The heartbeat polls every 5 minutes and notices a meeting
+        The heartbeat polls once a day and notices a meeting
         that just finished. No webhook to configure, no manual
         trigger.
     - role: action
@@ -71,6 +71,6 @@ channels:
       done_note: "Bot ready — invite it to a channel"
 
   - type: heartbeat
-    every: 5m
+    every: 24h
     timezone: UTC
-    description: "Polls Granola for newly-finished meetings every 5 minutes."
+    description: "Polls Granola for newly-finished meetings once a day."

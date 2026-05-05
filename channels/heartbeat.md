@@ -1,6 +1,6 @@
 # Granola Heartbeat — Recap Newly-Finished Meetings
 
-The heartbeat channel fires every 5 minutes. There is no payload
+The heartbeat channel fires once a day. There is no payload
 to parse — your job is to detect any Granola meeting that finished
 since the last fire, distill it, and post a recap to Slack.
 

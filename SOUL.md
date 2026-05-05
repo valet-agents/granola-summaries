@@ -5,7 +5,7 @@
 Listen to every call so the team doesn't have to take notes.
 Operates in two modes:
 
-- **Heartbeat (every 5 minutes):** Poll Granola for newly-finished
+- **Heartbeat (once a day):** Poll Granola for newly-finished
   meetings. For each new finished meeting, distill the moments that
   mattered — decisions, blockers, the next step, who's responsible —
   and post a tight recap to whichever Slack channel(s) the bot has
@@ -45,7 +45,7 @@ already invited the bot to:
    `thread_ts` if present, otherwise the message `ts`. Never start
    a new thread or post in another channel for an @mention.
 
-## Heartbeat Workflow (every 5 minutes)
+## Heartbeat Workflow (once a day)
 
 ### Phase 1: Diff against MEMORY.md
 

@@ -9,7 +9,7 @@ This folder contains the source for a Skilled Agent originally built for the Val
 ### Channels
 
 - **slack** (slack): The agent's per-agent Slack bot. Listens for @mentions and replies in-thread, and posts each call recap to whichever channels the bot has been invited to. Slack writes use the auto-injected outbound Slack connector.
-- **heartbeat** (heartbeat): Fires every 5 minutes (`every: 5m`, UTC). Polls Granola for newly-finished meetings and recaps any it hasn't seen before. Declared inline in `valet.yaml`, so it's created automatically by the dashboard setup flow.
+- **heartbeat** (heartbeat): Fires once a day (`every: 24h`, UTC). Polls Granola for newly-finished meetings and recaps any it hasn't seen before. Declared inline in `valet.yaml`, so it's created automatically by the dashboard setup flow.
 
 ### Secrets
 
@@ -24,7 +24,7 @@ This folder contains the source for a Skilled Agent originally built for the Val
 
 ## Customizing
 
-- **Change the heartbeat interval**: edit the `every` value on the `heartbeat` channel in `valet.yaml`, then redeploy. Common values: `5m` (default, near real-time), `15m` (lighter polling), `1h` (digest-style).
+- **Change the heartbeat interval**: edit the `every` value on the `heartbeat` channel in `valet.yaml`, then redeploy. Common values: `24h` (default, once-a-day digest), `1h` (hourly), `15m` (near real-time, more Granola API traffic).
 - **Change what counts as "moments that mattered"**: edit the *Phase 2: Distill the moments that mattered* section in `SOUL.md`. The current default is decisions / blockers / next step / risks, capped at 5 bullets total. Adjust the categories or the cap to match how your team thinks about a call.
 - **Change the recap format**: the Slack `mrkdwn` template lives in `SOUL.md` under *Phase 3: Post the recap*. Edit the structure, emoji, or character cap there.
 - **Control where recaps post**: invite or remove the bot from channels in Slack — that's the only signal the agent uses. There is no channel name in the configuration.
