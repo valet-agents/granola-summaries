@@ -1,0 +1,76 @@
+name: granola-summaries
+display_name: Granola Summaries
+description: >-
+  Listens to every call so the team doesn't have to take notes.
+  After each Granola meeting wraps, posts the moments that mattered
+  — decisions, blockers, and the next step — to the Slack channel
+  the bot was invited to. @mention it to recall past calls.
+category: sales
+
+story:
+  hero: "A teammate that listens to every call so you don't have to take notes."
+  subheadline: >-
+    After each Granola call, posts the moments that mattered to your
+    deal channel — decisions, blockers, and the next step. @mention
+    it any time to recall what happened on past calls.
+  steps:
+    - role: trigger
+      title: "A Granola call ends."
+      body: >-
+        The heartbeat polls every 5 minutes and notices a meeting
+        that just finished. No webhook to configure, no manual
+        trigger.
+    - role: action
+      title: "It distills the moments that mattered."
+      body: >-
+        Pulls the meeting summary and transcript, picks out the
+        decisions, blockers, and the next step — owners and due
+        dates included.
+      catalog: granola-mcp
+    - role: outcome
+      title: "A tight recap, posted in your deal channel."
+      body: >-
+        3–5 bullets, the Granola link, under 1,500 characters.
+        @mention the bot to ask what happened on any past call.
+      catalog: slack
+
+connectors:
+  - catalog: granola-mcp
+    description: >-
+      The Granola MCP server. The agent uses it to list recent
+      meetings, fetch summaries and transcripts for newly-finished
+      calls, and search across past meetings when answering Slack
+      questions.
+    slots:
+      GRANOLA_ACCESS_TOKEN:
+        description: >-
+          Personal access token from your Granola account. Get one
+          at granola.ai → Settings → Developer / API → create a new
+          access token and paste it here.
+    ui:
+      headline: "Connect Granola with an access token."
+      blurb: >-
+        Mint a personal access token in Granola (Settings →
+        Developer / API) and paste it. The agent uses it to read
+        meetings you have access to.
+      done_note: "Granola connected"
+
+channels:
+  - catalog: slack
+    description: >-
+      The agent gets its own Slack bot. Invite it to whichever deal
+      or team channels you want call recaps in, and to any channel
+      where teammates should be able to @mention it for ad-hoc
+      questions about past meetings.
+    ui:
+      headline: "Give Granola Summaries a Slack bot."
+      blurb: >-
+        The agent posts each call recap to every channel you invite
+        it to. Invite it to one focused deal channel, or several —
+        whatever matches how your team works.
+      done_note: "Bot ready — invite it to a channel"
+
+  - type: heartbeat
+    every: 5m
+    timezone: UTC
+    description: "Polls Granola for newly-finished meetings every 5 minutes."
